@@ -50,6 +50,14 @@ echo ""
 # Step 5: Install Playwright browsers
 echo "🌐 Installing Playwright browsers..."
 "$VENV_DIR/bin/playwright" install chromium
+
+# Install system dependencies on Linux (requires sudo)
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    echo "🐧 Detection Linux: Installing system dependencies for headless browser..."
+    echo "🔑 Sudo password may be required."
+    sudo "$VENV_DIR/bin/playwright" install-deps chromium
+fi
+
 echo "✅ Playwright Chromium browser installed"
 echo ""
 
